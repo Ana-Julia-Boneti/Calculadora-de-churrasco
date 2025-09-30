@@ -1,17 +1,17 @@
 #include <stdio.h>
 //Variável global
-float totalArrecadado
+float totalArrecadado=0;
 
 //Procedimento: adiciona a contribuição de um participante 
-void adicionaContribuiçao(float valor){
+void adicionaContribuicao(float valor){
     totalArrecadado += valor;
-    printf("Contribuição de R$ %.2f adicionada! Total:R$ %.2f", totalArrecadado);
+    printf("Contribuição de R$ %.2f adicionada! Total:R$ %.2f\n",valor, totalArrecadado);
 }
 
 //Função: Calcula quantidade de carne por pessoas (0.5KG por pessoa)
 
 float calculaCarne (int qtdPessoas){
-    return qtdpessoas * 0.5;
+    return qtdPessoas * 0.5;
 }
 
 //Procedimento para mostrar o resumo
@@ -20,9 +20,10 @@ void mostraResumo(int qtdPessoas){
     float media = totalArrecadado / qtdPessoas;
     printf("\n==== RESUMO CHURRASCO ====");
     printf("Participantes: %d\n",qtdPessoas);
-    printf("Carne necessária : %.2f KG\n")
-
-
+    printf("Carne necessária : %.2f KG\n",carne);
+    printf("Total arrecadado: R$ %.2f\n",totalArrecadado);
+    printf("Média por pessoa: R$ %.2f\n",media);
+    printf("===========================");
 
 
 }
@@ -30,12 +31,17 @@ void mostraResumo(int qtdPessoas){
 
 int main(){
  int pessoas;
- float valores;
+ float valor;
 
  printf("Digite o número de participantes: ");
  scanf("%d",&pessoas);
 
-mostraResumo(pessoas);
+ for(int i =1 ; i<= pessoas; i++){
+    printf("Digite a contribuição do participante %d: R$ ", i);
+    scanf("%f", &valor);
+    adicionaContribuicao(valor);
+ }
 
+ mostraResumo(pessoas);
 }
 
